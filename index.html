@@ -1,8 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Conway's Game of Life</title>
+    <title>Nishnath_G_Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/6en8XCp+HHAAK5GSLf2xlYtvJ8U2Q4U+9cuEnJoa3" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-hYp8/XyJHg5d5x5n5kbhWzlD1H2L11K7l0G6NwN7fjbnaNQDd6osJLgSnFUU/8Hhh6gnDp7FblSdTkYwT+AaBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" type="text/css">
+
     <style>
+       .tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.02s ease-in-out;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-bottom: 5px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 14px;
+  line-height: 1.2;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -46,12 +77,17 @@
 </head>
 <body>
     <canvas id="game-of-life"></canvas>
-    <div id="text-container" style="height: 200px; overflow-y: scroll;">
+    <div id="text-container" style="height: 90%; overflow-y: scroll;">
         <h2 id="heading"></h2>
         <p id="paragraph"></p>
     </div>
     <div id="controls">
-        <button id="reset-button">Reset</button>
+        <div class="tooltip">
+        <button id="reset-button" style="width: 2%; height: 10%; font-size: 14px; font-weight: bold; background-color: #4CAF50; color: white; border: none; border-radius: 6px;">
+            <i class="fas fa-blind" style="font-size: 2em;"></i> whats happening behind the scenes?
+            <span class="tooltiptext">"the Background is alive and running cellular automaton - Conway's Game of Life that consists of an infinite two-dimensional grid of cells, where each cell can either be alive or dead. The state of each cell in the grid is determined by its eight surrounding neighbors.you will be able to experience the infinte cell pattern coming alive when you scroll"</span>
+          </button>
+        </div>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>

@@ -93,24 +93,37 @@ function updateCellSize(deltaY) {
 
 const textContent = [
     {
-      heading: "Heading 1",
-      paragraph: "This is paragraph 1. You can add more content here."
+      heading: "Nishanth G",
+      paragraph: "< ~/Software Engineer ><br><br>&nbsp;&nbsp;\
+      <a href='https://github.com/Nishanth-works' target='_blank' style='color: #d5d4d6;' data-color='#8000ff'  class='icon-links'><i class='fab fa-github social-icon'></i></a>&nbsp;&nbsp;\
+      <a href='https://nishanth-g.medium.com/' target='_blank' style='color: #6ef186;' data-color='#09ff36' class='icon-links'><i class='fab fa-medium-m social-icon'></i></a>&nbsp;&nbsp;\
+      <a href='mailto:g.nishanth@live.com' style='color: #f31818;' data-color='#f31818' class='icon-links'><i class='fas fa-envelope social-icon'></i></a>&nbsp;&nbsp;\
+      <a href='https://www.linkedin.com/in/nishanth-gandhi-350b54165/' target='_blank' style='color: #2f77ea;' data-color='#2f77ea' class='icon-links'><i class='fab fa-linkedin-in social-icon'></i></a>"
     },
     {
-      heading: "Heading 2",
-      paragraph: "This is paragraph 2. You can add more content here."
+        heading: "About Me",
+        paragraph: "Experienced software engineer,<br> with a strong focus on machine learning and AI.<br><br>\
+        Skilled in building robust and scalable applications<br><br>\
+        optimizing deep neural networks and maintaining infrastructure<br>\
+        "
+      },
+    {
+      heading: "Projects",
+      paragraph: "<ul><li><a href='https://github.com/Nishanth-works/U-Net_GAN_Next-Gen_3D_Synthesis'>U-Net GANVoxForge :<br> is an advanced 3D transformation tool<br> that harnesses the power of Generative Adversarial Networks (GANs) with U-Net architecture<br> to convert 2D images into highly detailed and accurate 3D voxel models.</a></li><br>\
+                      <li><a href='https://github.com/Nishanth-works/point_cloud_object_detection'>PointNet :<br> A High-Performance, Memory-Optimised Object Detection and Classification Model for Point Clouds</a></li><br>\
+                      <li><a href='https://nichuu.github.io/portfolio/AUTOMATED_SEGMENTATION_OF%20BREAST_LESIONS_USING_DEEP_NEURAL_NETWORK.docx.pdf'>NeuroLesion Segmentation :<br> Automated Segmentation of Breast Lesions using Deep Neural Network</a></li><br>\
+                      <li><a href=''>Neural Text Extraction :<br> Neural Network-Aided Text Extraction from Images using Tesseract OCR and OpenCV for Advanced Optical Character Recognition</a></li><br>\
+                      </ul>"
     },
     {
-      heading: "Heading 3",
-      paragraph: "This is paragraph 3. You can add more content here."
-    },
-    {
-      heading: "Heading 4",
-      paragraph: "This is paragraph 4. You can add more content here."
-    },
-    {
-      heading: "Heading 5",
-      paragraph: "This is paragraph 5. You can add more content here."
+      heading: "Articles",
+      paragraph: "<ul><li><a href='https://medium.com/nerd-for-tech/leveraging-vector-databases-with-redis-a-comprehensive-guide-bd7b6edeee0d'>Leveraging Vector Databases with Redis <br> - A Comprehensive Guide</a></li><br>\
+                    <li><a href='https://medium.com/nerd-for-tech/mmaps-in-python-63b044c3014a'>MMaps in Python</a></li><br>\
+                    <li><a href='https://medium.com/nerd-for-tech/hands-on-introducing-to-apache-kafka-d93e836e781c'>Hands on Introducing to Apache Kafka</a></li><br>\
+                    <li><a href='https://medium.com/nerd-for-tech/hashing-in-context-of-load-balancing-392b317fe40e'>Hashing in context of Load Balancing</a></li><br>\
+                    <li><a href='https://medium.com/nerd-for-tech/custom-lookups-in-django-69fd13e35bdb'>Custom Lookups in Django</a></li><br>\
+                    <li><a href='https://medium.com/nerd-for-tech/elasticsearch-part-1-5ba00a04cf8a'>Elasticsearch part -1: A Gentle Introduction</a></li><br>\
+                    </ul>"
     }
   ];
   
@@ -120,7 +133,7 @@ const textContent = [
   
   function updateTextContent() {
     headingElement.textContent = textContent[index].heading;
-    paragraphElement.textContent = textContent[index].paragraph;
+    paragraphElement.innerHTML = textContent[index].paragraph;
   }
   updateTextContent();
 
