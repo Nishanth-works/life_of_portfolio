@@ -43,6 +43,53 @@ function setup() {
   // Update the background animation every 50 milliseconds
   setInterval(updateBackground, 50);
 }
+scrollBackground();
+
+function scrollBackground() {
+  let touchStartY;
+
+  window.addEventListener("touchstart", (event) => {
+    touchStartY = event.touches[0].clientY;
+  });
+
+  window.addEventListener("touchmove", (event) => {
+    const deltaY = event.touches[0].clientY - touchStartY;
+
+    if (deltaY !== 0) {
+      updateCellSize(deltaY);
+    }
+  });
+
+  window.addEventListener("touchend", (event) => {
+    touchStartY = null;
+  });
+
+  window.addEventListener("wheel", (event) => {
+    updateCellSize(event.deltaY);
+  });
+}
+
+function updateCellSize(deltaY) {
+  // Adjust the size of the cells based on the scroll direction
+  if (deltaY > 0) {
+    cellSize += cellSize * CELL_SIZE_FACTOR;
+    if (cellSize > MAX_CELL_SIZE) {
+      cellSize = MAX_CELL_SIZE;
+    }
+  } else {
+    cellSize -= cellSize * CELL_SIZE_FACTOR;
+    if (cellSize < MIN_CELL_SIZE) {
+      cellSize = MIN_CELL_SIZE;
+    }
+  }
+
+  // Update the number of rows and columns based on the new cell size
+  numRows = Math.floor(windowHeight / cellSize);
+  numCols = Math.floor(windowWidth / cellSize);
+
+  // Reinitialize the grid with the new size
+  initializeGrid();
+}
 
 const textContent = [
     {
@@ -76,9 +123,46 @@ const textContent = [
     paragraphElement.textContent = textContent[index].paragraph;
   }
   updateTextContent();
+
+  
   
   function scrollText() {
     let isScrolling = false;
+  let touchStartY;
+
+  window.addEventListener("touchstart", (event) => {
+    touchStartY = event.touches[0].clientY;
+  });
+
+  window.addEventListener("touchmove", (event) => {
+    if (isScrolling) return;
+
+    isScrolling = true;
+    headingElement.style.opacity = 0;
+    paragraphElement.style.opacity = 0;
+
+    setTimeout(() => {
+      const deltaY = event.touches[0].clientY - touchStartY;
+
+      if (deltaY < 0) {
+        index = (index + 1) % textContent.length;
+      } else {
+        index = (index - 1 + textContent.length) % textContent.length;
+      }
+      updateTextContent();
+
+      headingElement.style.opacity = 1;
+      paragraphElement.style.opacity = 1;
+
+      setTimeout(() => {
+        isScrolling = false;
+      }, 500);
+    }, 500);
+  });
+
+  window.addEventListener("touchend", (event) => {
+    touchStartY = null;
+  });
   
     window.addEventListener("wheel", (event) => {
       if (isScrolling) return;
@@ -106,7 +190,16 @@ const textContent = [
   }
   
   scrollText();
+
+  function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+    numRows = Math.floor(windowHeight / cellSize);
+    numCols = Math.floor(windowWidth / cellSize);
+    initializeGrid();
+  }
   
+
+
 function updateBackground() {
   background(bgColor);
 
